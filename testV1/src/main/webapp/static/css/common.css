@@ -1,0 +1,140 @@
+@CHARSET "UTF-8";
+/*页面主div*/
+.main_div{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+    align-items:center;
+    font-size:14px;
+}
+
+/*搜索框*/
+.search_div{
+    width:98%;
+    display:flex;
+    flex-direction:row;
+    justify-content:flex-start;
+    align-items:center;
+    margin:20px 0;
+    font-size:12px;
+}
+
+.search_bar{
+    width:300px;
+    height:35px;
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items:center;
+    border:#eeeeee 1px solid;
+}
+
+.search_bar input{
+    width:80%;
+    height:90%;
+    border:none;
+    outline:none;
+    padding-left:10px;
+    font-size:12px;
+}
+
+.search_bar div{
+    width:20%;
+    height:100%;
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items:center;
+    background-color:#fafafa;
+    border-left:#eeeeee 1px solid;
+    cursor:pointer;
+}
+
+.search_bar div:hover{
+    background-color:#f3f3f3;
+}
+
+.search_bar div img{
+    width:20px;
+}
+
+/*按钮*/
+.btn_line{
+    width:98%;
+    display:flex;
+    flex-direction:row;
+    justify-content:flex-end;
+    align-items:center;
+    margin:-10px 0 10px 0;
+}
+
+.btn_line div{
+    background: #498FD7;
+    color:#ffffff;
+    padding:5px 20px;
+    cursor:pointer;
+    margin-left:20px;
+    border-radius:2px;
+}
+
+/*列表*/
+.common_table {
+    width:98%;
+    border:solid #eeeeee; 
+    border-width:1px 0px 0px 1px;
+    border-spacing:0px;
+    min-width: 600px;
+    font-size: 12px;
+}
+
+.common_table th{
+    padding: 8px 5px;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 500;
+    background: rgb(63, 186, 242);
+    border-bottom: 1px solid #eee;
+    line-height: 1.5em;
+    text-align:center;
+}
+
+.common_table td {
+    padding: 8px 5px;
+    border-bottom: 1px solid #eee;
+    line-height: 1.5em;
+    color: #666;
+    text-align:center;
+    cursor: text;
+}
+
+.common_table tr:nth-child(2n+1) {
+    background-color:#fafafa;
+}
+
+.common_table tr:hover{
+    background: #f8f8f8;
+}
+
+.common_table a{
+    color:#498FD7;
+    cursor:pointer;
+    text-decoration:underline;
+}
+.common_table td{
+    border-right:1px solid #eeeeee; 
+}
+
+.common_table th{
+    border-right:1px solid #eeeeee; 
+}
+
+/*单元格居左*/
+.table_cell_left{
+    text-align:left !important;
+}
+
+/*单元格居右*/
+.table_cell_right{
+    text-align:right !important;
+}

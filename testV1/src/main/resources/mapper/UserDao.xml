@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.testV1.dao.UserDao">
+  <sql id="Base_Column_List">
+    open_uid, open_id, nick_name, head_img, is_deleted, create_time, user_name, user_tel
+  </sql>
+  
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultType="User">
+    select 
+    <include refid="Base_Column_List" />
+    from t_user
+    where open_uid = #{openUid,jdbcType=VARCHAR}
+  </select>
+  
+  <update id="deleteByPrimaryKey" parameterType="java.lang.String">
+    update t_user 
+    set is_deleted = 1
+    where open_uid = #{openUid,jdbcType=VARCHAR}
+  </update>
+  
+  <insert id="insert" parameterType="com.testV1.pojo.SaveUserPojo">
+    insert into t_user (open_id, nick_name, 
+      head_img, is_deleted, create_time, 
+      user_name, user_tel)
+    values ( #{openId,jdbcType=VARCHAR}, 'nickname', 
+      #{headImg,jdbcType=VARCHAR}, 0, now(), 
+      #{userName,jdbcType=VARCHAR}, #{userTel,jdbcType=VARCHAR})
+  </insert>
+  
+  <insert id="insertSelective" parameterType="com.testV1.entity.User">
+    insert into t_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="openUid != null">
+        open_uid,
+      </if>
+      <if test="openId != null">
+        open_id,
+      </if>
+      <if test="nickName != null">
+        nick_name,
+      </if>
+      <if test="headImg != null">
+        head_img,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="userTel != null">
+        user_tel,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="openUid != null">
+        #{openUid,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null">
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null">
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="headImg != null">
+        #{headImg,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userTel != null">
+        #{userTel,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.testV1.entity.User">
+    update t_user
+    <set>
+      <if test="openId != null">
+        open_id = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null">
+        nick_name = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="headImg != null">
+        head_img = #{headImg,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userTel != null">
+        user_tel = #{userTel,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where open_uid = #{openUid,jdbcType=VARCHAR}
+  </update>
+  
+  <update id="updateByPrimaryKey" parameterType="com.testV1.pojo.SaveUserPojo">
+    update t_user
+    set open_id = #{openId,jdbcType=VARCHAR},
+      head_img = #{headImg,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      user_tel = #{userTel,jdbcType=VARCHAR}
+    where open_uid = #{openUid,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="QueryUser" resultType="User">
+		select
+		    open_uid,
+			open_id,
+			nick_name,
+			head_img,
+			is_deleted,
+			create_time,
+			user_name,
+			user_tel
+		from 
+			t_user
+		where 
+			(user_name like CONCAT('%','${searchStr}','%' ) or user_tel like CONCAT('%','${searchStr}','%' ))
+	     	and is_deleted = 0
+		order by 
+		 	create_time desc 
+		limit #{startIndex,jdbcType=NUMERIC}, #{limitCount,jdbcType=NUMERIC}
+			
+	</select>
+</mapper>
