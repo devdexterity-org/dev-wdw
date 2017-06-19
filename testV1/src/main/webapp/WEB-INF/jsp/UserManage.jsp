@@ -6,12 +6,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>用户管理</title>
-<script type="text/javascript" src="../resources/js/jquery.2.0.min.js"></script>
-<script type="text/javascript" src="../resources/js/jquery.resize.js"></script>
-<script type="text/javascript" src="../resources/js/Util.js"></script>
-<script type="text/javascript" src="../resources/js-ctrl/userManageCtrl.js"></script>
-<link rel="stylesheet" href="../resources/css/common.css" type="text/css"> 
-<link rel="stylesheet" href="../resources/css/user.css" type="text/css"> 
+<script type="text/javascript" src="../static/js/jquery.2.0.min.js"></script>
+<script type="text/javascript" src="../static/js/jquery.resize.js"></script>
+<script type="text/javascript" src="../static/js/Util.js"></script>
+<script type="text/javascript" src="../static/js-ctrl/userManageCtrl.js"></script>
+<link rel="stylesheet" href="../static/css/common.css" type="text/css"> 
+<link rel="stylesheet" href="../static/css/user.css" type="text/css"> 
 </head>
 <body>
 <script>
@@ -21,7 +21,7 @@
 	<div class="search_div">
         <div class="search_bar">
             <input type="text" id="search_text"  placeholder="请输入关键字搜索"/>
-            <div onclick="UserManageCtrl.search()"><img src="../resources/images/search.png"/></div>
+            <div onclick="UserManageCtrl.search()"><img src="../static/images/search.png"/></div>
         </div>
 	</div>
 	<div class="btn_line">
