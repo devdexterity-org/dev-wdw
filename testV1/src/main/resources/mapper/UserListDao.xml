@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.testV1.dao.UserListMapper">
+  <resultMap id="BaseResultMap" type="com.testV1.entity.UserList">
+    <id column="open_uid" jdbcType="INTEGER" property="openUid" />
+    <result column="id" jdbcType="VARCHAR" property="id" />
+    <result column="open_id" jdbcType="VARCHAR" property="openId" />
+    <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
+    <result column="head_img" jdbcType="VARCHAR" property="headImg" />
+    <result column="is_deleted" jdbcType="BIT" property="isDeleted" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_tel" jdbcType="VARCHAR" property="userTel" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    open_uid, id, open_id, nick_name, head_img, is_deleted, create_time, user_name, user_tel
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_user
+    where open_uid = #{openUid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_user
+    where open_uid = #{openUid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.testV1.entity.UserList">
+    insert into t_user (open_uid, id, open_id, 
+      nick_name, head_img, is_deleted, 
+      create_time, user_name, user_tel
+      )
+    values (#{openUid,jdbcType=INTEGER}, #{id,jdbcType=VARCHAR}, #{openId,jdbcType=VARCHAR}, 
+      #{nickName,jdbcType=VARCHAR}, #{headImg,jdbcType=VARCHAR}, #{isDeleted,jdbcType=BIT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{userName,jdbcType=VARCHAR}, #{userTel,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.testV1.entity.UserList">
+    insert into t_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="openUid != null">
+        open_uid,
+      </if>
+      <if test="id != null">
+        id,
+      </if>
+      <if test="openId != null">
+        open_id,
+      </if>
+      <if test="nickName != null">
+        nick_name,
+      </if>
+      <if test="headImg != null">
+        head_img,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="userTel != null">
+        user_tel,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="openUid != null">
+        #{openUid,jdbcType=INTEGER},
+      </if>
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null">
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null">
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="headImg != null">
+        #{headImg,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userTel != null">
+        #{userTel,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.testV1.entity.UserList">
+    update t_user
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null">
+        open_id = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null">
+        nick_name = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="headImg != null">
+        head_img = #{headImg,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userTel != null">
+        user_tel = #{userTel,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where open_uid = #{openUid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.testV1.entity.UserList">
+    update t_user
+    set id = #{id,jdbcType=VARCHAR},
+      open_id = #{openId,jdbcType=VARCHAR},
+      nick_name = #{nickName,jdbcType=VARCHAR},
+      head_img = #{headImg,jdbcType=VARCHAR},
+      is_deleted = #{isDeleted,jdbcType=BIT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      user_name = #{userName,jdbcType=VARCHAR},
+      user_tel = #{userTel,jdbcType=VARCHAR}
+    where open_uid = #{openUid,jdbcType=INTEGER}
+  </update>
+</mapper>
